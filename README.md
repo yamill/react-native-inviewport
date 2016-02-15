@@ -1,5 +1,5 @@
 # react-native-inviewport
-Sensor component for React-Native that notifies you when it goes in or out of the device viewport. 
+Detect if component is in device viewport.
 I based this off: https://github.com/joshwnj/react-visibility-sensor with some slight modifications.
 
 <H2>Install</H2>
@@ -31,25 +31,25 @@ render() {
         <Text style={{color: 'white'}}>View is visible? {this.state.visible}</Text>
       </View>
     </InViewPort>
-    
+
     <InViewPort onChange={this.checkVisible}>
       <View style={{flex: 1, height: 200, backgroundColor: 'green'}}>
         <Text style={{color: 'white'}}>View is visible? {this.state.visible}</Text>
       </View>
     </InViewPort>
-    
+
     <InViewPort onChange={this.checkVisible}>
       <View style={{flex: 1, height: 200, backgroundColor: 'red'}}>
         <Text style={{color: 'white'}}>View is visible? {this.state.visible}</Text>
       </View>
     </InViewPort>
-    
+
     <InViewPort onChange={this.checkVisible}>
       <View style={{flex: 1, height: 200, backgroundColor: 'orange'}}>
         <Text style={{color: 'white'}}>View is visible? {this.state.visible}</Text>
       </View>
     </InViewPort>
-    
+
     <InViewPort onChange={this.checkVisible}>
       <View style={{flex: 1, height: 200}}>
         <Text>View is visible? {this.state.visible}</Text>
@@ -59,5 +59,3 @@ render() {
   );
 }
 ```
-
-
