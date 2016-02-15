@@ -1,0 +1,16 @@
+{
+  "name": "react-native-inviewport",
+  "version": "1.0.0",
+  "description": "Detect if view is in viewport",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "react-native",
+    "ios",
+    "android"
+  ],
+  "author": "Yamill Vallecillo <yamill@gmail.com> (http://github.com/yamill)",
+  "license": "ISC"
+}
