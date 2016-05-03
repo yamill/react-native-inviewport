@@ -61,11 +61,13 @@ module.exports = React.createClass({
     var rect = el.measure((ox, oy, width, height, pageX, pageY) => {
       this.setState({
         rectTop: pageY,
-        rectBottom: pageY + height
+        rectBottom: pageY + height,
+        rectWidth: pageX + width,
       })
     });
     var isVisible = (
-      this.state.rectBottom != 0 && this.state.rectTop >= 0 && this.state.rectBottom <= window.height
+      this.state.rectBottom != 0 && this.state.rectTop >= 0 && this.state.rectBottom <= window.height &&
+      this.state.rectWidth > 0 && this.state.rectWidth <= window.width
     );
 
     // notify the parent when the value changes
