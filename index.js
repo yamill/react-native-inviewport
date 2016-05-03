@@ -65,7 +65,7 @@ module.exports = React.createClass({
       })
     });
     var isVisible = (
-      this.state.rectTop >= 0 && this.state.rectBottom <= window.height
+      this.state.rectBottom != 0 && this.state.rectTop >= 0 && this.state.rectBottom <= window.height
     );
 
     // notify the parent when the value changes
