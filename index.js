@@ -59,11 +59,11 @@ module.exports = React.createClass({
    */
   check: function () {
     var el = this.refs.myview;
-    var rect = el.measure((ox, oy, width, height, pageX, pageY) => {
+    var rect = el.measureInWindow((x, y, width, height) => {
       this.setState({
-        rectTop: pageY,
-        rectBottom: pageY + height,
-        rectWidth: pageX + width,
+        rectTop: y,
+        rectBottom: y + height,
+        rectWidth: x + width,
       })
     });
     var isVisible = (
