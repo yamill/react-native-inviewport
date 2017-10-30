@@ -1,87 +1,89 @@
-'use strict';
+import React from 'react'
+import { View, Dimensions } from 'react-native'
+import PropTypes from 'prop-types'
 
-var React = require('react-native');
-var window = React.Dimensions.get('window');
-var {View, NativeMethodsMixin} = React;
+const window = Dimensions.get('window')
 
-module.exports = React.createClass({
-  displayName: 'InViewPort',
-  mixins: [NativeMethodsMixin],
-  propTypes: {
-    onChange: React.PropTypes.func.isRequired,
-    active: React.PropTypes.bool,
-    delay: React.PropTypes.number
-  },
+class InViewPort extends React.PureComponent {
+	 static propTypes = {
+		onChange: PropTypes.func.isRequired,
+		active: PropTypes.bool,
+		delay: PropTypes.number
+	}
 
-  getDefaultProps: function () {
-    return {
-      active: true,
-      delay: 100
-    };
-  },
+	static defaultProps = {
+		active: true,
+		delay: 100,
+	}
 
-  getInitialState: function(){
-    return {
-      rectTop: 0,
-      rectBottom: 0
-    }
-  },
-  componentDidMount: function () {
-    if (this.props.active) {
-      this.startWatching();
-    }
-  },
+	constructor(props) {
+		super(props)
+		this.state = {
+			rectTop: 0,
+			rectBottom: 0
+		}
+	}
 
-  componentWillUnmount: function () {
-    this.stopWatching();
-  },
+	onLayout() {
+		if (this.props.active) {
+			this.startWatching()
+		}
+	}
 
-  componentWillReceiveProps: function (nextProps) {
-    if (nextProps.active) {
-      this.lastValue = null;
-      this.startWatching();
-    } else {
-      this.stopWatching();
-    }
-  },
+	componentWillUnmount() {
+		this.stopWatching()
+	}
 
-  startWatching: function () {
-    if (this.interval) { return; }
-    this.interval = setInterval(this.check, this.props.delay);
-  },
+	componentWillReceiveProps(nextProps) {
+		if(nextProps.active != this.props.active){
+			if (nextProps.active) {
+				this.lastValue = null
+				this.startWatching()
+			} else {
+				this.stopWatching()
+			}
+		}
+	}
 
-  stopWatching: function () {
-    this.interval = clearInterval(this.interval);
-  },
-  /**
-   * Check if the element is within the visible viewport
-   */
-  check: function () {
-    var el = this.refs.myview;
-    var rect = el.measure((ox, oy, width, height, pageX, pageY) => {
-      this.setState({
-        rectTop: pageY,
-        rectBottom: pageY + height,
-        rectWidth: pageX + width,
-      })
-    });
-    var isVisible = (
-      this.state.rectBottom != 0 && this.state.rectTop >= 0 && this.state.rectBottom <= window.height &&
-      this.state.rectWidth > 0 && this.state.rectWidth <= window.width
-    );
+	startWatching() {
+		if (this.interval) { return }
+		this.interval = setInterval(this.check, this.props.delay)
+	}
 
-    // notify the parent when the value changes
-    if (this.lastValue !== isVisible) {
-      this.lastValue = isVisible;
-      this.props.onChange(isVisible);
-    }
-  },
+	stopWatching() {
+		this.interval = clearInterval(this.interval)
+	}
 
-  render: function () {
-    return (
-      <View ref='myview' {...this.props}>
-        {this.props.children}
-      </View>
-    );
-  }
-});
+	check = () => {
+		const el = this.myview
+		if (!el) { return }
+		const rect = el.measure((ox, oy, width, height, pageX, pageY) => {
+			this.setState({
+				rectTop: pageY,
+				rectBottom: pageY + height,
+				rectWidth: pageX + width,
+			})
+		})
+		const isVisible = (
+			this.state.rectBottom != 0 && this.state.rectTop >= 0 && this.state.rectBottom <= window.height &&
+			this.state.rectWidth > 0 && this.state.rectWidth <= window.width
+		)
+
+		// notify the parent when the value changes
+		if (this.lastValue !== isVisible) {
+			this.lastValue = isVisible
+			this.props.onChange(isVisible)
+		}
+	}
+
+	render() {
+		return (
+			<View ref={component => this.myview = component} {...this.props} onLayout={() => this.onLayout()}>
+				{this.props.children}
+			</View>
+		)
+	}
+
+}
+
+export default InViewPort
