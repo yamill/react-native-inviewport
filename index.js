@@ -30,6 +30,9 @@ exports.InViewPort = class extends Component {
       return;
     }
     this.interval = setInterval(() => {
+      if (!this.myview) {
+        return;
+      }
       this.myview.measure((x, y, width, height, pageX, pageY) => {
         this.setState({
           rectTop: pageY,
