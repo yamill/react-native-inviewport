@@ -11,7 +11,7 @@ I based this off: https://github.com/joshwnj/react-visibility-sensor with some s
 Assuming you already setup your component, here's a quick example.
 
 ```
-checkVisible(isVisible){
+checkVisible = (isVisible) => {
     if(isVisible){
       if(!this.state.visible){
         this.setState({visible: true});
@@ -26,31 +26,31 @@ checkVisible(isVisible){
 render() {
   return (
   <ScrollView style={{flex: 1}}>
-    <InViewPort onChange={this.checkVisible}>
+    <InViewPort onChange={(isVisible) => this.checkVisible(isVisible)}>
       <View style={{flex: 1, height: 200, backgroundColor: 'blue'}}>
         <Text style={{color: 'white'}}>View is visible? {this.state.visible}</Text>
       </View>
     </InViewPort>
 
-    <InViewPort onChange={this.checkVisible}>
+    <InViewPort onChange={(isVisible) => this.checkVisible(isVisible)}>
       <View style={{flex: 1, height: 200, backgroundColor: 'green'}}>
         <Text style={{color: 'white'}}>View is visible? {this.state.visible}</Text>
       </View>
     </InViewPort>
 
-    <InViewPort onChange={this.checkVisible}>
+    <InViewPort onChange={(isVisible) => this.checkVisible(isVisible)}>
       <View style={{flex: 1, height: 200, backgroundColor: 'red'}}>
         <Text style={{color: 'white'}}>View is visible? {this.state.visible}</Text>
       </View>
     </InViewPort>
 
-    <InViewPort onChange={this.checkVisible}>
+    <InViewPort onChange={onChange={(isVisible) => this.checkVisible(isVisible)}>
       <View style={{flex: 1, height: 200, backgroundColor: 'orange'}}>
         <Text style={{color: 'white'}}>View is visible? {this.state.visible}</Text>
       </View>
     </InViewPort>
 
-    <InViewPort onChange={this.checkVisible}>
+    <InViewPort onChange={(isVisible) => this.checkVisible(isVisible)}>
       <View style={{flex: 1, height: 200}}>
         <Text>View is visible? {this.state.visible}</Text>
       </View>
