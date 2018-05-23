@@ -4,14 +4,15 @@ var React = require('react');
 var ReactNative = require('react-native');
 var window = ReactNative.Dimensions.get('window');
 var {View, NativeMethodsMixin} = ReactNative;
+var PropTypes = require('prop-types');
 
 module.exports = React.createClass({
   displayName: 'InViewPort',
   mixins: [NativeMethodsMixin],
   propTypes: {
-    onChange: React.PropTypes.func.isRequired,
-    active: React.PropTypes.bool,
-    delay: React.PropTypes.number
+    onChange: PropTypes.func.isRequired,
+    active: PropTypes.bool,
+    delay: PropTypes.number
   },
 
   getDefaultProps: function () {
