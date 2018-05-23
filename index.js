@@ -1,16 +1,19 @@
 'use strict';
 
-var React = require('react-native');
-var window = React.Dimensions.get('window');
-var {View, NativeMethodsMixin} = React;
+var React = require('react');
+var ReactNative = require('react-native');
+var window = ReactNative.Dimensions.get('window');
+var {View, NativeMethodsMixin} = ReactNative;
+var PropTypes = require('prop-types');
+var createReactClass = require('create-react-class');
 
-module.exports = React.createClass({
+module.exports = createReactClass({
   displayName: 'InViewPort',
   mixins: [NativeMethodsMixin],
   propTypes: {
-    onChange: React.PropTypes.func.isRequired,
-    active: React.PropTypes.bool,
-    delay: React.PropTypes.number
+    onChange: PropTypes.func.isRequired,
+    active: PropTypes.bool,
+    delay: PropTypes.number
   },
 
   getDefaultProps: function () {
@@ -58,11 +61,11 @@ module.exports = React.createClass({
    */
   check: function () {
     var el = this.refs.myview;
-    var rect = el.measure((ox, oy, width, height, pageX, pageY) => {
+    var rect = el.measureInWindow((x, y, width, height) => {
       this.setState({
-        rectTop: pageY,
-        rectBottom: pageY + height,
-        rectWidth: pageX + width,
+        rectTop: y,
+        rectBottom: y + height,
+        rectWidth: x + width,
       })
     });
     var isVisible = (
