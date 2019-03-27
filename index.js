@@ -4,6 +4,7 @@ import React, { Component } from 'react'
 import { View, NativeMethodsMixin, Dimensions } from 'react-native'
 
 exports.InViewPort = class extends Component {
+  isMounted = true
   constructor(props) {
     super(props)
     this.state = { rectTop: 0, rectBottom: 0 }
@@ -16,6 +17,7 @@ exports.InViewPort = class extends Component {
   }
 
   componentWillUnmount() {
+    this.isMounted = false
     this.stopWatching()
   }
 
@@ -37,11 +39,13 @@ exports.InViewPort = class extends Component {
         return
       }
       this.myview.measure((x, y, width, height, pageX, pageY) => {
-        this.setState({
-          rectTop: pageY,
-          rectBottom: pageY + height,
-          rectWidth: pageX + width
-        })
+        if (this.isMounted) {
+          this.setState({
+            rectTop: pageY,
+            rectBottom: pageY + height,
+            rectWidth: pageX + width
+          })
+        }
       })
       this.isInViewPort()
     }, this.props.delay || 100)
