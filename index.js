@@ -4,13 +4,14 @@ import React, { Component } from 'react'
 import { View, NativeMethodsMixin, Dimensions } from 'react-native'
 
 exports.InViewPort = class extends Component {
-  isMounted = true
+  isMounted = false
   constructor(props) {
     super(props)
     this.state = { rectTop: 0, rectBottom: 0 }
   }
 
   componentDidMount() {
+    this.isMounted = true
     if (!this.props.disabled) {
       this.startWatching()
     }
