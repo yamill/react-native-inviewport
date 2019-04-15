@@ -55,8 +55,8 @@ exports.InViewPort = class extends Component {
     const window = Dimensions.get('window')
     const isVisible =
       this.state.rectBottom != 0 &&
-      this.state.rectTop >= 0 &&
-      this.state.rectBottom <= window.height &&
+      this.state.rectBottom >= 0 &&
+      this.state.rectTop <= window.height &&
       this.state.rectWidth > 0 &&
       this.state.rectWidth <= window.width
     if (this.lastValue !== isVisible) {
