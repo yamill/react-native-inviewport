@@ -1,81 +1,74 @@
-'use strict';
+"use strict";
 
-import React, { Component } from 'react'
-import { View, NativeMethodsMixin, Dimensions } from 'react-native'
+import React, { useEffect, useState } from "react";
+import { View, Dimensions } from "react-native";
 
-exports.InViewPort = class extends Component {
-  constructor(props) {
-    super(props)
-    this.state = { rectTop: 0, rectBottom: 0 }
-  }
+const InViewPort = props => {
+  let interval;
+  let myView;
+  let isVisible;
 
-  componentDidMount() {
-    if (!this.props.disabled) {
-      this.startWatching()
+  const [dimensions, setDimensions] = useState({
+    rectTop: 0,
+    rectBottom: 0,
+    rectWidth: 0
+  });
+
+  const useIsInViewPort = () => {
+    const window = Dimensions.get("window");
+
+    isVisible =
+      dimensions.rectBottom != 0 &&
+      dimensions.rectBottom >= 0 &&
+      dimensions.rectTop <= window.height &&
+      dimensions.rectWidth > 0 &&
+      dimensions.rectWidth <= window.width;
+
+    props.onChange(isVisible);
+  };
+
+  const useStartWatching = () => {
+    if (interval) {
+      return;
     }
-  }
 
-  componentWillUnmount() {
-    this.stopWatching()
-  }
-
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.disabled) {
-      this.stopWatching()
-    } else {
-      this.lastValue = null
-      this.startWatching()
-    }
-  }
-
-  startWatching() {
-    if (this.interval) {
-      return
-    }
-    this.interval = setInterval(() => {
-      if (!this.myview) {
-        return
+    interval = setInterval(() => {
+      if (!myView) {
+        return;
       }
-      this.myview.measure((x, y, width, height, pageX, pageY) => {
-        this.setState({
+
+      myView.measure((x, y, width, height, pageX, pageY) => {
+        setDimensions({
           rectTop: pageY,
           rectBottom: pageY + height,
           rectWidth: pageX + width
-        })
-      })
-      this.isInViewPort()
-    }, this.props.delay || 100)
-  }
+        });
+      });
 
-  stopWatching() {
-    this.interval = clearInterval(this.interval)
-  }
+      useIsInViewPort();
+    }, 100);
+  };
 
-  isInViewPort() {
-    const window = Dimensions.get('window')
-    const isVisible =
-      this.state.rectBottom != 0 &&
-      this.state.rectBottom >= 0 &&
-      this.state.rectTop <= window.height &&
-      this.state.rectWidth > 0 &&
-      this.state.rectWidth <= window.width
-    if (this.lastValue !== isVisible) {
-      this.lastValue = isVisible
-      this.props.onChange(isVisible)
-    }
-  }
+  const useStopWatching = () => {
+    interval = clearInterval(interval);
+  };
 
-  render() {
-    return (
-      <View
-        collapsable={false}
-        ref={component => {
-          this.myview = component
-        }}
-        {...this.props}
-      >
-        {this.props.children}
-      </View>
-    )
-  }
-}
+  useEffect(() => {
+    useStartWatching();
+    return () => useStopWatching();
+  }, [useStartWatching]);
+
+  return (
+    <View
+      collapsable={false}
+      ref={component => {
+        myView = component;
+      }}
+      {...props}
+    >
+      {props.children}
+    </View>
+  );
+};
+
+export default InViewPort;
