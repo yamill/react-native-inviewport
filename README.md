@@ -1,10 +1,10 @@
-# react-native-inviewport
+# react-native-inviewport-sh
 Detect if component is in device viewport.
-I based this off: https://github.com/joshwnj/react-visibility-sensor with some slight modifications.
+I based this off:https://github.com/yamill/react-native-inviewport with some slight modifications.
 
 <H2>Install</H2>
 
-```sudo npm react-native-inviewport@latest --save```
+```npm install react-native-inviewport-sh```
 
 <H2>Example Usage</H2>
 
