@@ -1,5 +1,5 @@
 {
-  "name": "react-native-inviewport",
+  "name": "react-native-inviewport-sh",
   "version": "0.3.0",
   "description": "Detect if component is in device viewport",
   "main": "index.js",
