@@ -4,13 +4,15 @@ I based this off:https://github.com/yamill/react-native-inviewport with some sli
 
 <H2>Install</H2>
 
-```npm install react-native-inviewport-sh```
+```npm install react-native-inviewport-sh --save```
 
 <H2>Example Usage</H2>
 
 Assuming you already setup your component, here's a quick example.
 
 ```
+import InViewPort from "react-native-inviewport-sh";
+
 checkVisible = (isVisible) => {
     if(isVisible){
       if(!this.state.visible){

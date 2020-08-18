@@ -13,14 +13,11 @@
     "ios",
     "android"
   ],
-  "author": "Yamill Vallecillo <yamill@gmail.com> (http://github.com/yamill)",
+  "author": "Preeti Sharma",
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/yamill/react-native-inviewport.git"
+    "url": "git+https://github.com/sharmapr25/react-native-inviewport"
   },
-  "bugs": {
-    "url": "https://github.com/yamill/react-native-inviewport/issues"
-  },
-  "homepage": "https://github.com/yamill/react-native-inviewport#readme"
+  "homepage": "https://github.com/sharmapr25/react-native-inviewport#readme"
 }
