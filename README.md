@@ -1,17 +1,17 @@
-# react-native-inviewport-pr
+# cb-react-native-inviewport
 Detect if component is in device viewport.
 I based this off:https://github.com/yamill/react-native-inviewport with some slight modifications.
 
 <H2>Install</H2>
 
-```npm install react-native-inviewport-pr --save```
+```npm install cb-react-native-inviewport --save```
 
 <H2>Example Usage</H2>
 
 Assuming you already setup your component, here's a quick example.
 
 ```
-import InViewPort from "react-native-inviewport-pr";
+import InViewPort from "cb-react-native-inviewport";
 
 checkVisible = (isVisible) => {
     if(isVisible){
