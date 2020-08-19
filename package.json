@@ -1,5 +1,5 @@
 {
-  "name": "react-native-inviewport-pr",
+  "name": "@coffeebeanslabs/react-native-inviewport",
   "version": "0.1.0",
   "description": "Detect if component is in device viewport",
   "main": "index.js",
@@ -17,7 +17,7 @@
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sharmapr25/react-native-inviewport"
+    "url": "git+https://github.com/CoffeeBeansLabs/react-native-inviewport"
   },
-  "homepage": "https://github.com/sharmapr25/react-native-inviewport#readme"
+  "homepage": "https://github.com/CoffeeBeansLabs/react-native-inviewport#readme"
 }
