@@ -1,11 +1,10 @@
 {
-  "name": "@coffeebeanslabs/react-native-inviewport",
-  "version": "0.1.0",
+  "name": "react-native-inviewport",
+  "version": "1.1.1",
   "description": "Detect if component is in device viewport",
   "main": "index.js",
   "scripts": {
-    "build": "webpack",
-    "test": "echo \"Error: no test specified\" "
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
     "react-component",
@@ -13,11 +12,14 @@
     "ios",
     "android"
   ],
-  "author": "Preeti Sharma",
+  "author": "Yamill Vallecillo <yamill@gmail.com> (http://github.com/yamill)",
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/CoffeeBeansLabs/react-native-inviewport"
+    "url": "git+https://github.com/yamill/react-native-inviewport.git"
   },
-  "homepage": "https://github.com/CoffeeBeansLabs/react-native-inviewport#readme"
+  "bugs": {
+    "url": "https://github.com/yamill/react-native-inviewport/issues"
+  },
+  "homepage": "https://github.com/yamill/react-native-inviewport#readme"
 }
