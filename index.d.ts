@@ -3,7 +3,7 @@ import { ViewProps } from 'react-native';
 export interface InViewPortProps extends ViewProps {
     disabled?: boolean;
     interval?: number;
-    onChange?: (visible: boolean) => void;
+    onChange?: (visible: boolean, layout: Rect) => void;
     children?: React.ReactNode;
 }
 export interface Rect {

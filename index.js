@@ -55,7 +55,7 @@ function InViewPort(props) {
                 setRect(rect);
                 var visible = isInWindow(rect);
                 if (visible !== wasVisible.current) {
-                    (_a = props.onChange) === null || _a === void 0 ? void 0 : _a.call(props, visible);
+                    (_a = props.onChange) === null || _a === void 0 ? void 0 : _a.call(props, visible, rect);
                     wasVisible.current = visible;
                 }
             });

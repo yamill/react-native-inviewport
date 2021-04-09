@@ -5,7 +5,7 @@ import { View, Dimensions, ViewProps } from 'react-native'
 export interface InViewPortProps extends ViewProps {
   disabled?: boolean;
   interval?: number;
-  onChange?: (visible: boolean) => void;
+  onChange?: (visible: boolean, layout: Rect) => void;
   children?: React.ReactNode;
 }
 
@@ -49,7 +49,7 @@ export default function InViewPort(props: InViewPortProps) {
 
         const visible = isInWindow(rect);
         if (visible !== wasVisible.current) {
-          props.onChange?.(visible);
+          props.onChange?.(visible, rect);
           wasVisible.current = visible;
         }
       });
