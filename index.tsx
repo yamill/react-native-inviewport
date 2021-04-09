@@ -1,4 +1,5 @@
-import React, { Component, useState, useEffect, useRef } from 'react'
+import * as React from 'react'
+import { Component, useState, useEffect, useRef } from 'react'
 import { View, Dimensions, ViewProps } from 'react-native'
 
 export interface InViewPortProps extends ViewProps {

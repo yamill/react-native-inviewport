@@ -1,6 +1,6 @@
 {
   "name": "react-native-inviewport",
-  "version": "2",
+  "version": "2.0.0",
   "description": "Detect if component is in device viewport",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",

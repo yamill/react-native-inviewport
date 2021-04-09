@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { ViewProps } from 'react-native';
 export interface InViewPortProps extends ViewProps {
     disabled?: boolean;
