@@ -3,7 +3,7 @@
       "target": "es5",
       "module": "commonjs",
       "declaration": true,
-      "outDir": "./lib",
+      "outDir": "./",
       "jsx": "react"
     },
     "include": ["index.tsx"],
