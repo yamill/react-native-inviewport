@@ -48,7 +48,7 @@ export default function InViewPort(props: InViewPortProps) {
         setRect(rect);
 
         const visible = isInWindow(rect);
-        if (visible && visible !== wasVisible.current) {
+        if (visible !== wasVisible.current) {
           props.onChange?.(visible);
           wasVisible.current = visible;
         }
