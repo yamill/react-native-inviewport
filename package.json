@@ -22,7 +22,7 @@
     "url": "https://github.com/yamill/react-native-inviewport/issues"
   },
   "homepage": "https://github.com/yamill/react-native-inviewport#readme",
-  "dependencies": {
-    "prop-types": "^15.7.2"
+  "devDependencies": {
+    "typescript": "^4.2.4"
   }
 }
