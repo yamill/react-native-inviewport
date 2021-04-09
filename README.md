@@ -4,7 +4,7 @@ I based this off: https://github.com/joshwnj/react-visibility-sensor with some s
 
 <H2>Install</H2>
 
-```sudo npm react-native-inviewport@latest --save```
+`npm i react-native-inviewport`
 
 <H2>Example Usage</H2>
 
