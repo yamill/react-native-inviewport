@@ -31,7 +31,7 @@ export default function InViewPort(props: InViewPortProps) {
 
   const [rect, setRect] = useState<Rect>({ top: 0, bottom: 0, width: 0 });
   const viewRef = useRef<View>(null);
-  const wasVisible = useRef<boolean>(null);
+  const wasVisible = useRef<boolean | null>(null);
 
   useEffect(() => {
     if (props.disabled) return;
@@ -56,6 +56,7 @@ export default function InViewPort(props: InViewPortProps) {
     }, props.interval || 100);
 
     return () => {
+      wasVisible.current = null;
       clearInterval(timer);
     }
   }, [props.interval, props.disabled]);
